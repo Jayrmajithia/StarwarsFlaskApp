@@ -1,4 +1,4 @@
-# Star Wars Flask API
+# Star Wars Flask APP
 Hello Welcome to Star Wars API endpoint using dockerized version of application
 There are two endpoints in this application. This application uses "swapi.dev" for the data
 ## "/films"
