@@ -12,9 +12,10 @@ def index():
     '''
     return s
 
+# Provides the list of films in sorted by release date of the movie
 @app.route('/films')
 def filmsList():
-    req = requests.get("https://swapi.dev/api/films/")
+    req = requests.get("https://swapi.dev/api/films/") # Fetches the list of film from the swapi endpoint
     res = req.json()
     ans = "<html><head><title>Star Wars Film</title></head><table border= \"1px solid black\"><tr><th>Film_id</th><th>Film</th><th>Released Year</th></tr>"
     for film_id in range(len(res['results'])):
@@ -27,14 +28,14 @@ def filmsList():
 def characterList():
     if "filmid" in request.args:
         id = request.args["filmid"]
-        req = requests.get("https://swapi.dev/api/films/" + id)
+        req = requests.get("https://swapi.dev/api/films/" + id) # Fetches the data from the swapi for the particular film
         res = req.json()
         characters = []
         for people in res['characters']:
-            req = requests.get(people)
+            req = requests.get(people) # Fetching the details about differnt film
             p = req.json()
             characters.append(p['name'])
-        characters.sort()
+        characters.sort() # Sorting the characters name
         res = "<ul>"
         for name in characters:
             res += "<li>" + name + "</li>"
